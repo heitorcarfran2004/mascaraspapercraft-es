@@ -24,15 +24,34 @@ export function Testimonials() {
   const [pos, setPos] = useState(1);
   const [animate, setAnimate] = useState(true);
 
+  // Trava de animação: impede avançar mais rápido que a transição (evita "estourar" os limites).
+  const animatingRef = useRef(false);
+  const lockTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const beginMove = () => {
+    animatingRef.current = true;
+    if (lockTimer.current) clearTimeout(lockTimer.current);
+    // Segurança: solta a trava caso o transitionend não dispare.
+    lockTimer.current = setTimeout(() => {
+      animatingRef.current = false;
+    }, 650);
+  };
+
   const next = () => {
+    if (animatingRef.current) return;
+    beginMove();
     setAnimate(true);
     setPos((p) => p + 1);
   };
   const prev = () => {
+    if (animatingRef.current) return;
+    beginMove();
     setAnimate(true);
     setPos((p) => p - 1);
   };
   const goToReal = (i: number) => {
+    if (animatingRef.current || i + 1 === pos) return;
+    beginMove();
     setAnimate(true);
     setPos(i + 1);
   };
@@ -47,6 +66,8 @@ export function Testimonials() {
       setAnimate(false);
       setPos(count);
     }
+    animatingRef.current = false;
+    if (lockTimer.current) clearTimeout(lockTimer.current);
   };
 
   const activeDot = (pos - 1 + count) % count;
