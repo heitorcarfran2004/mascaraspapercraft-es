@@ -61,7 +61,7 @@ export function Pricing() {
 
             <button
               onClick={() => setIsUpsellOpen(true)}
-              className="w-full py-3 px-6 rounded-full border border-border text-muted-foreground font-medium hover:border-primary hover:text-foreground transition-colors"
+              className="w-full py-3 px-6 rounded-full border border-[hsl(35_20%_60%)] text-[hsl(30_15%_27%)] font-medium hover:border-primary hover:text-foreground transition-colors"
             >
               {basic.cta}
             </button>

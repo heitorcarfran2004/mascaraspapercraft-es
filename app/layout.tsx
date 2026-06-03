@@ -40,6 +40,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" className={inter.variable}>
+      <head>
+        {/* Aquece a conexão com o CDN do UTMify (scripts de UTM e pixel) */}
+        <link rel="preconnect" href="https://cdn.utmify.com.br" crossOrigin="" />
+        <link rel="dns-prefetch" href="https://cdn.utmify.com.br" />
+      </head>
       <body>
         {children}
 

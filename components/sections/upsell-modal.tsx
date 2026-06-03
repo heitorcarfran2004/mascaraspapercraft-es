@@ -46,7 +46,7 @@ export function UpsellModal({ open, onOpenChange }: UpsellModalProps) {
         <div className="p-6 text-center">
           <DialogTitle className="text-xl font-bold mb-2">
             {upsell.titleLead}{" "}
-            <span className="text-success">{upsell.titleHighlight}</span>{" "}
+            <span className="gradient-text">{upsell.titleHighlight}</span>{" "}
             {upsell.titleTail}
           </DialogTitle>
 

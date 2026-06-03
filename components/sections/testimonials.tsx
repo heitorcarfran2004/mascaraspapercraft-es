@@ -90,8 +90,8 @@ export function Testimonials() {
       <div className="container-narrow">
         <div className="text-center mb-10">
           <h2 className="text-[30px] md:text-[40px] font-bold leading-[40px] md:leading-[54px]">
-            Quem Comprou{" "}
-            <span className="block gradient-text">Aprovou e Recomenda</span>
+            Quem Compra{" "}
+            <span className="block gradient-text">Aprova e Recomenda</span>
           </h2>
         </div>
 
