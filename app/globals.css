@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Paleta quente, inspirada em artesanato */
+    --background: 40 30% 96%;
+    --foreground: 30 25% 12%;
+
+    --card: 40 25% 98%;
+    --card-foreground: 30 25% 12%;
+
+    --popover: 40 25% 98%;
+    --popover-foreground: 30 25% 12%;
+
+    /* Primária: âmbar/laranja quente */
+    --primary: 25 95% 53%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secundária: creme suave */
+    --secondary: 40 30% 92%;
+    --secondary-foreground: 30 25% 15%;
+
+    --muted: 40 20% 90%;
+    --muted-foreground: 30 15% 40%;
+
+    /* Destaque: marrom quente profundo */
+    --accent: 25 70% 25%;
+    --accent-foreground: 40 30% 96%;
+
+    /* CTA / Destrutivo (vermelho) */
+    --destructive: 0 85% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 35 25% 85%;
+    --input: 35 25% 85%;
+    --ring: 25 95% 53%;
+
+    --radius: 0.75rem;
+
+    /* Gradientes e cores auxiliares */
+    --hero-gradient-start: 25 95% 53%;
+    --hero-gradient-end: 15 90% 45%;
+    --success: 142 70% 45%;
+    --success-foreground: 0 0% 100%;
+    --green-gradient-start: 142 70% 45%;
+    --green-gradient-end: 152 75% 35%;
+
+    /* Sombras */
+    --shadow-soft: 0 4px 20px -4px hsl(30 25% 12% / 0.1);
+    --shadow-card: 0 8px 30px -8px hsl(30 25% 12% / 0.12);
+    --shadow-elevated: 0 20px 50px -15px hsl(30 25% 12% / 0.2);
+  }
+
+  .dark {
+    --background: 30 20% 8%;
+    --foreground: 40 30% 96%;
+
+    --card: 30 20% 12%;
+    --card-foreground: 40 30% 96%;
+
+    --popover: 30 20% 12%;
+    --popover-foreground: 40 30% 96%;
+
+    --primary: 25 95% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 30 20% 18%;
+    --secondary-foreground: 40 30% 96%;
+
+    --muted: 30 15% 20%;
+    --muted-foreground: 40 20% 65%;
+
+    --accent: 25 80% 60%;
+    --accent-foreground: 30 20% 8%;
+
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 30 15% 20%;
+    --input: 30 15% 20%;
+    --ring: 25 95% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased font-sans;
+    font-weight: 400;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .gradient-primary {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--hero-gradient-start)),
+      hsl(var(--hero-gradient-end))
+    );
+  }
+
+  .gradient-text {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary)),
+      hsl(var(--hero-gradient-end))
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-green {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--green-gradient-start)),
+      hsl(var(--green-gradient-end))
+    );
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .tag-badge {
+    @apply inline-flex items-center px-4 py-1.5 rounded-full text-sm font-semibold;
+    background: hsl(var(--primary) / 0.1);
+    color: hsl(var(--primary));
+  }
+
+  .tag-badge-red {
+    @apply inline-flex items-center px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wide;
+    background: hsl(var(--destructive));
+    color: hsl(var(--destructive-foreground));
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24 px-4;
+  }
+
+  .container-narrow {
+    @apply max-w-6xl mx-auto;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Marquee contínuo da galeria (desliza sozinho para a direita) */
+@keyframes gallery-marquee {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
