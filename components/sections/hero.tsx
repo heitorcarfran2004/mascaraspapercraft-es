@@ -64,6 +64,7 @@ export function Hero() {
                   width={hero.image.width}
                   height={hero.image.height}
                   priority
+                  sizes="(min-width: 1024px) 600px, 100vw"
                   className="w-full h-auto object-cover"
                 />
               </div>

@@ -28,6 +28,7 @@ export function GalleryCarousel({ images }: { images: string[] }) {
               alt=""
               fill
               sizes="230px"
+              quality={60}
               className="object-cover"
             />
           </div>
