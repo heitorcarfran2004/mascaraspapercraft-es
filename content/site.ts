@@ -24,6 +24,23 @@ export const backRedirectUrl = "https://mascaraspaperback.vercel.app/";
 export const utmifyPixelId = "69db37c122a31821d842a567";
 
 /* ------------------------------------------------------------------ */
+/* Demonstração em vídeo ("Compre sem medo")                           */
+/* ------------------------------------------------------------------ */
+
+export const productDemo = {
+  eyebrow: "VEJA NA PRÁTICA",
+  titleLead: "Compre",
+  titleHighlight: "Sem Medo",
+  subtitle:
+    "Aperte o play e veja o produto por dentro: como você recebe, como acessa e a qualidade dos moldes.",
+  video: {
+    playerId: "vid-6a4d0c6f38fbf93867be47df",
+    script:
+      "https://scripts.converteai.net/59fb2471-bbf9-48ae-ad59-009b3aba8bd1/players/6a4d0c6f38fbf93867be47df/v4/player.js",
+  },
+} as const;
+
+/* ------------------------------------------------------------------ */
 /* Topo / Hero                                                         */
 /* ------------------------------------------------------------------ */
 
