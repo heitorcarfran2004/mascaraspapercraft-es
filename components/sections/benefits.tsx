@@ -8,10 +8,11 @@ export function Benefits() {
       <div className="container-narrow">
         <div className="text-center mb-12">
           <p className="mb-3 text-sm font-bold uppercase tracking-widest text-muted-foreground">
-            Mais que um hobby...
+            Más que un hobby...
           </p>
           <h2 className="text-3xl md:text-4xl font-extrabold">
-            Por que você <span className="gradient-text">deve começar hoje?</span>
+            ¿Por qué deberías{" "}
+            <span className="gradient-text">empezar hoy?</span>
           </h2>
         </div>
 

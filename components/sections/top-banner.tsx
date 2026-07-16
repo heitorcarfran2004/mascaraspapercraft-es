@@ -3,14 +3,14 @@
 import { useEffect, useState } from "react";
 import { Clock } from "lucide-react";
 
-/** Faixa de urgência no topo, exibindo a data de hoje. */
+/** Franja de urgencia superior, mostrando la fecha de hoy. */
 export function TopBanner() {
   const [today, setToday] = useState("");
 
-  // Calcula a data no cliente para evitar divergência de hidratação.
+  // Se calcula en el cliente para evitar divergencia de hidratación.
   useEffect(() => {
     setToday(
-      new Date().toLocaleDateString("pt-BR", {
+      new Date().toLocaleDateString("es-ES", {
         day: "numeric",
         month: "long",
         year: "numeric",
@@ -25,10 +25,10 @@ export function TopBanner() {
           <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/15">
             <Clock className="h-3 w-3" />
           </span>
-          <span>Oportunidade Única:</span>
+          <span>Oportunidad Única:</span>
         </div>
         <p className="text-[11px] sm:text-xs font-normal tracking-normal">
-          Promoção válida somente até hoje{today && `, ${today}`}
+          Promoción válida solo hasta hoy{today && `, ${today}`}
         </p>
       </div>
     </header>

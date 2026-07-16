@@ -25,12 +25,11 @@ export function Pricing() {
       <div className="container-narrow">
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-bold mb-3">
-            Escolha <span className="gradient-text">seu kit</span>
+            Elige <span className="gradient-text">tu kit</span>
           </h2>
           <p className="text-muted-foreground">
-            Sem mensalidades! Pagou uma
-            <br />
-            vez, é seu para sempre
+            ¡Sin cuotas! Pagas una vez
+            <br />y es tuyo para siempre
           </p>
         </div>
 
@@ -102,7 +101,7 @@ export function Pricing() {
 
             <div className="mb-6">
               <p className="text-xs font-bold uppercase tracking-widest text-foreground mb-3">
-                BÔNUS INCLUSOS
+                BONOS INCLUIDOS
               </p>
               <ul className="space-y-2">
                 {master.bonuses.map((bonus) => (
@@ -163,7 +162,7 @@ export function Pricing() {
               </div>
               <div className="text-center">
                 <div className="w-12 h-[2px] bg-muted-foreground/30 mx-auto mb-2" />
-                <p className="text-xs text-muted-foreground">Assinatura</p>
+                <p className="text-xs text-muted-foreground">Firma</p>
                 <p className="text-xs text-muted-foreground">autorizada</p>
               </div>
             </div>

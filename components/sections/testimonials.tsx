@@ -1,181 +1,42 @@
-"use client";
+import { Star } from "lucide-react";
 
-import { useRef, useState } from "react";
-import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-
-import { cn } from "@/lib/utils";
-import { testimonialImages } from "@/content/site";
-
-const SLIDE_WIDTH = 72; // % da largura visível ocupada pelo print central
-const PEEK_OFFSET = (100 - SLIDE_WIDTH) / 2; // sobra dividida entre os dois lados
+import { testimonials } from "@/content/site";
 
 export function Testimonials() {
-  const count = testimonialImages.length;
-
-  // Slides estendidos: [últimoClone, ...reais, primeiroClone] para loop contínuo.
-  const slides = [
-    testimonialImages[count - 1],
-    ...testimonialImages,
-    testimonialImages[0],
-  ];
-
-  // Começa no 1º real (índice 1); assim o último (clone em 0) já espia à esquerda.
-  const [pos, setPos] = useState(1);
-  const [animate, setAnimate] = useState(true);
-
-  // Trava de animação: impede avançar mais rápido que a transição (evita "estourar" os limites).
-  const animatingRef = useRef(false);
-  const lockTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const beginMove = () => {
-    animatingRef.current = true;
-    if (lockTimer.current) clearTimeout(lockTimer.current);
-    // Segurança: solta a trava caso o transitionend não dispare.
-    lockTimer.current = setTimeout(() => {
-      animatingRef.current = false;
-    }, 650);
-  };
-
-  const next = () => {
-    if (animatingRef.current) return;
-    beginMove();
-    setAnimate(true);
-    setPos((p) => p + 1);
-  };
-  const prev = () => {
-    if (animatingRef.current) return;
-    beginMove();
-    setAnimate(true);
-    setPos((p) => p - 1);
-  };
-  const goToReal = (i: number) => {
-    if (animatingRef.current || i + 1 === pos) return;
-    beginMove();
-    setAnimate(true);
-    setPos(i + 1);
-  };
-
-  // Ao terminar de animar para um clone, salta sem transição para o real equivalente.
-  const handleTransitionEnd = (e: React.TransitionEvent) => {
-    if (e.target !== e.currentTarget || e.propertyName !== "transform") return;
-    if (pos === count + 1) {
-      setAnimate(false);
-      setPos(1);
-    } else if (pos === 0) {
-      setAnimate(false);
-      setPos(count);
-    }
-    animatingRef.current = false;
-    if (lockTimer.current) clearTimeout(lockTimer.current);
-  };
-
-  const activeDot = (pos - 1 + count) % count;
-
-  // Swipe por toque
-  const touchStartX = useRef<number | null>(null);
-  const onTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.targetTouches[0].clientX;
-  };
-  const onTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX.current === null) return;
-    const delta = touchStartX.current - e.changedTouches[0].clientX;
-    if (delta > 50) next();
-    else if (delta < -50) prev();
-    touchStartX.current = null;
-  };
-
   return (
-    <section className="section-padding bg-background overflow-hidden">
+    <section className="section-padding bg-background">
       <div className="container-narrow">
         <div className="text-center mb-10">
           <h2 className="text-[30px] md:text-[40px] font-bold leading-[40px] md:leading-[54px]">
-            Quem Compra{" "}
-            <span className="block gradient-text">Aprova e Recomenda</span>
+            Quien Compra{" "}
+            <span className="block gradient-text">Aprueba y Recomienda</span>
           </h2>
         </div>
 
-        <div className="relative mx-auto max-w-2xl">
-          <div className="overflow-hidden">
+        <div className="grid md:grid-cols-3 gap-8">
+          {testimonials.map((testimonial) => (
             <div
-              className={cn(
-                "flex",
-                animate && "transition-transform duration-500 ease-out",
-              )}
-              style={{
-                transform: `translateX(calc(${PEEK_OFFSET}% - ${pos * SLIDE_WIDTH}%))`,
-              }}
-              onTransitionEnd={handleTransitionEnd}
-              onTouchStart={onTouchStart}
-              onTouchEnd={onTouchEnd}
+              key={testimonial.author}
+              className="bg-card rounded-2xl p-8 shadow-card card-hover border-2 border-dashed border-muted-foreground/30"
             >
-              {slides.map((src, i) => {
-                const isActive = i === pos;
-                return (
-                  <div
-                    key={i}
-                    className="w-[72%] shrink-0 grow-0 px-2"
-                    aria-hidden={!isActive}
-                  >
-                    <div
-                      className={cn(
-                        "overflow-hidden rounded-2xl border-2 border-dashed border-muted-foreground/30 bg-card shadow-card",
-                        animate && "transition-all duration-500",
-                        isActive
-                          ? "scale-100 opacity-100"
-                          : "scale-[0.82] opacity-50",
-                      )}
-                    >
-                      <Image
-                        src={src}
-                        alt={`Depoimento ${i}`}
-                        width={0}
-                        height={0}
-                        sizes="(min-width: 768px) 460px, 75vw"
-                        className="w-full h-auto"
-                      />
-                    </div>
-                  </div>
-                );
-              })}
+              <div className="flex gap-1 mb-4">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className="w-5 h-5 fill-primary text-primary" />
+                ))}
+              </div>
+
+              <p className="text-lg mb-6 leading-relaxed">
+                &ldquo;{testimonial.quote}&rdquo;
+              </p>
+
+              <div>
+                <p className="font-bold">{testimonial.author}</p>
+                <p className="text-sm text-muted-foreground">
+                  {testimonial.role}
+                </p>
+              </div>
             </div>
-          </div>
-
-          {/* Setas sobrepostas aos depoimentos laterais */}
-          <button
-            type="button"
-            onClick={prev}
-            aria-label="Depoimento anterior"
-            className="absolute left-1 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-card/90 text-foreground shadow-card backdrop-blur transition-colors hover:bg-card"
-          >
-            <ChevronLeft className="h-6 w-6" />
-          </button>
-          <button
-            type="button"
-            onClick={next}
-            aria-label="Próximo depoimento"
-            className="absolute right-1 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-card/90 text-foreground shadow-card backdrop-blur transition-colors hover:bg-card"
-          >
-            <ChevronRight className="h-6 w-6" />
-          </button>
-
-          {/* Dots de paginação */}
-          <div className="mt-6 flex justify-center gap-2">
-            {testimonialImages.map((src, i) => (
-              <button
-                key={src}
-                type="button"
-                onClick={() => goToReal(i)}
-                aria-label={`Ir para o depoimento ${i + 1}`}
-                className={cn(
-                  "h-3 rounded-full transition-all duration-300",
-                  i === activeDot
-                    ? "w-8 bg-primary"
-                    : "w-3 bg-muted hover:bg-muted-foreground/50",
-                )}
-              />
-            ))}
-          </div>
+          ))}
         </div>
       </div>
     </section>
