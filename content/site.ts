@@ -8,15 +8,16 @@
 /* Enlaces de checkout y rastreo                                       */
 /* ------------------------------------------------------------------ */
 
-// TODO (migración EU): estos checkouts son de la oferta brasileña (BRL).
-// Sustituir por el checkout europeo en EUR antes de publicar.
+/** Checkouts de Hotmart (ES) — los precios de abajo deben coincidir con cada oferta. */
 export const checkout = {
-  /** Plan completo "Colección Maestra" (CTA principal). */
-  master: "https://ggcheckout.app/checkout/v5/oCtE74KEwFtvHEiWxULY",
-  /** Upsell que aparece cuando el usuario elige el plan básico. */
-  upsell: "https://ggcheckout.app/checkout/v5/fo1NxX1ks8T6qBXtTvHy",
-  /** Plan básico (cuando el usuario rechaza el upsell). */
-  basic: "https://ggcheckout.app/checkout/v5/q2Z6itwEAb0nHVyVlykm",
+  /** Plan completo "Colección Maestra" — 13,90 € (CTA principal). */
+  master:
+    "https://pay.hotmart.com/S106798558S?off=8t3lbwkd&checkoutMode=10",
+  /** Upsell del modal — 9,90 € (plan completo con descuento). */
+  upsell:
+    "https://pay.hotmart.com/S106798558S?off=kalnxjvx&checkoutMode=10",
+  /** Plan básico — 6,90 €. */
+  basic: "https://pay.hotmart.com/S106798558S?off=ujx69nob&checkoutMode=10",
 } as const;
 
 /** A dónde vuelve el navegador al pulsar "atrás" (back-redirect). */
@@ -320,8 +321,8 @@ export const pricing = {
     name: "Colección Maestra",
     badge: "Más popular",
     originalPrice: "Antes 49,90 €",
-    price: "17,90 €",
-    savings: "Ahorra 32,00 €",
+    price: "13,90 €",
+    savings: "Ahorra 36,00 €",
     features: [
       "Acceso a +500 plantillas",
       "Soporte prioritario",
@@ -360,8 +361,8 @@ export const upsell = {
   description:
     "Te ha interesado el Plan Básico, pero ¿qué tal llevarte el Plan Completo con más de 500 plantillas por un precio exclusivo?",
   offerLabel: "OFERTA RELÁMPAGO",
-  originalPrice: "17,90 €",
-  price: "11,90 €",
+  originalPrice: "13,90 €",
+  price: "9,90 €",
   /** Tiempo de la cuenta atrás, en segundos (1:45). */
   countdownSeconds: 105,
   acceptCta: "Quiero aprovecharlo ahora",
