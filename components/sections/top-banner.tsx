@@ -10,7 +10,7 @@ export function TopBanner() {
   // Se calcula en el cliente para evitar divergencia de hidratación.
   useEffect(() => {
     setToday(
-      new Date().toLocaleDateString("es-ES", {
+      new Date().toLocaleDateString("es-MX", {
         day: "numeric",
         month: "long",
         year: "numeric",

@@ -12,7 +12,7 @@ export function Equipment() {
             Sin Materiales Caros
           </span>
           <h2 className="text-[1.876rem] md:text-[2.376rem] font-extrabold leading-snug">
-            Del móvil <span className="gradient-text">a tus manos</span>
+            Del celular <span className="gradient-text">a tus manos</span>
           </h2>
         </div>
 

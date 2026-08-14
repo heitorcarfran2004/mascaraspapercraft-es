@@ -16,18 +16,17 @@ const OG_IMAGE =
   "https://storage.googleapis.com/gpt-engineer-file-uploads/nDSSbIo2HPeiG0Jxxss23a9Mly33/social-images/social-1770642621161-Design_sem_nome_(3).png";
 
 export const metadata: Metadata = {
-  title: "Espaço Criativo",
+  title: "Espacio Creativo",
   description: "Transformando simples hojas de papel en arte",
   openGraph: {
     type: "website",
-    title: "Espaço Criativo",
+    title: "Espacio Creativo",
     description: "Transformando simples hojas de papel en arte",
     images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
-    site: "@Lovable",
-    title: "Espaço Criativo",
+    title: "Espacio Creativo",
     description: "Transformando simples hojas de papel en arte",
     images: [OG_IMAGE],
   },
@@ -41,14 +40,14 @@ export default function RootLayout({
   return (
     <html lang="es" className={inter.variable}>
       <head>
-        {/* Aquece a conexão com o CDN do UTMify (scripts de UTM e pixel) */}
+        {/* Precalienta la conexión con el CDN de UTMify (scripts de UTM y pixel) */}
         <link rel="preconnect" href="https://cdn.utmify.com.br" crossOrigin="" />
         <link rel="dns-prefetch" href="https://cdn.utmify.com.br" />
       </head>
       <body>
         {children}
 
-        {/* UTMify — rastreamento de UTMs */}
+        {/* UTMify — rastreo de UTMs */}
         <Script
           src="https://cdn.utmify.com.br/scripts/utms/latest.js"
           strategy="afterInteractive"
@@ -56,7 +55,7 @@ export default function RootLayout({
           data-utmify-prevent-subids=""
         />
 
-        {/* Back-redirect: ao apertar "voltar", leva para a oferta */}
+        {/* Back-redirect: al pulsar "atrás", lleva a la oferta */}
         <Script id="back-redirect" strategy="afterInteractive">
           {`
             (function () {

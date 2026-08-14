@@ -157,8 +157,8 @@ export function Pricing() {
             <div className="flex items-center justify-center gap-8">
               <div className="text-center">
                 <div className="w-12 h-[2px] bg-muted-foreground/30 mx-auto mb-2" />
-                <p className="text-xs text-muted-foreground">Espaço</p>
-                <p className="text-xs text-muted-foreground">Criativo</p>
+                <p className="text-xs text-muted-foreground">Espacio</p>
+                <p className="text-xs text-muted-foreground">Creativo</p>
               </div>
               <div className="text-center">
                 <div className="w-12 h-[2px] bg-muted-foreground/30 mx-auto mb-2" />
