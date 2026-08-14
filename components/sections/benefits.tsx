@@ -26,8 +26,8 @@ export function Benefits() {
                 <Image
                   src={benefit.image}
                   alt={benefit.title}
-                  width={0}
-                  height={0}
+                  width={benefit.width}
+                  height={benefit.height}
                   sizes="(min-width: 768px) 33vw, 100vw"
                   className="w-full h-auto object-contain"
                 />

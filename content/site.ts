@@ -75,6 +75,9 @@ export const hero = {
 
 export interface Benefit {
   image: string;
+  /** Dimensões reais do arquivo — usadas só para reservar espaço e evitar CLS. */
+  width: number;
+  height: number;
   title: string;
   description: string;
 }
@@ -82,24 +85,32 @@ export interface Benefit {
 export const benefits: Benefit[] = [
   {
     image: "/images/beneficios/beneficio1.jpg",
+    width: 2048,
+    height: 1152,
     title: "Disfraces increíbles gastando poco",
     description:
       "Monta disfraces espectaculares para fiestas de disfraces o cumpleaños temáticos",
   },
   {
     image: "/images/beneficios/beneficio2.jpg",
+    width: 2752,
+    height: 1536,
     title: "Ideal para eventos, fotos y decoración",
     description:
       "Crea máscaras únicas que llaman la atención en fiestas, cumpleaños, sesiones de fotos e incluso en la decoración de casa",
   },
   {
     image: "/images/beneficios/beneficio3.jpg",
+    width: 2741,
+    height: 1530,
     title: "Terapia antiestrés",
     description:
       "Desconecta de las pantallas y concéntrate en el momento presente. Recortar y montar papel es una forma sencilla y eficaz de relajar la mente.",
   },
   {
     image: "/images/beneficios/beneficio4.jpg",
+    width: 2752,
+    height: 1536,
     title: "La actividad perfecta en familia",
     description:
       "Una actividad creativa para hacer con hijos, sobrinos o nietos. Menos pantalla, más conversación, más recuerdos creados juntos.",
